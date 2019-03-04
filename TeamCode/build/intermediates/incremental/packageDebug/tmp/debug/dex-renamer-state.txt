@@ -1,0 +1,4 @@
+#Sat Mar 02 21:43:27 PST 2019
+base.0=/Users/isaacdienstag/Desktop/SDK THAT WE USE 2/TeamCode/build/intermediates/dex/debug/mergeDexDebug/out
+path.0=classes.dex
+renamed.0=classes.dex
