@@ -110,7 +110,7 @@ public class Lifter extends TeleopMain { //This class has to extend TeleopMain i
         else if(afterLift) //If afterLift is true and we are not trying to drop
             liftMotor.setPower(.1); //Set liftMotor power to .1, so we hold where we are and don't drop at all
         else if(doingItAll)//If we are trying to automatically raise from the bottom
-            liftMotor.setPower(1); //Set the power to 1 to raise untill we hit the sensor
+            liftMotor.setPower(1); //Set the power to 1 to raise until we hit the sensor
         else
             liftMotor.setPower(0); //Set the power of liftMotor to 0
     } //End void method
