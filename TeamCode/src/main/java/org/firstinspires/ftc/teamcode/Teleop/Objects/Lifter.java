@@ -1,13 +1,15 @@
 //LIFTER created on September 8th by Isaac Dienstag
 
 //Package statement
-package org.firstinspires.ftc.teamcode.Teleop;
+package org.firstinspires.ftc.teamcode.Teleop.Objects;
 
 //Import statements
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.Servo;
+
+import org.firstinspires.ftc.teamcode.Teleop.Mains.TeleopMain;
 
 //Class declaration
 public class Lifter extends TeleopMain { //This class has to extend TeleopMain in order to have access to getRuntime() method

@@ -1,12 +1,18 @@
 //TELEOPMAIN created on September 8th by Isaac Dienstag
 
 //Package statements
-package org.firstinspires.ftc.teamcode.Teleop;
+package org.firstinspires.ftc.teamcode.Teleop.Mains;
 
 //Import statements
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
+
+import org.firstinspires.ftc.teamcode.Teleop.Objects.DriveTrain;
+import org.firstinspires.ftc.teamcode.Teleop.Objects.Grabber;
+import org.firstinspires.ftc.teamcode.Teleop.Objects.Hanger;
+import org.firstinspires.ftc.teamcode.Teleop.Objects.Lifter;
+
 import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.FORWARD;
 import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.REVERSE;
 

@@ -1,7 +1,7 @@
 //HANGER created by Isaac Dienstag on October 21st
 
 //Package declaration
-package org.firstinspires.ftc.teamcode.Teleop;
+package org.firstinspires.ftc.teamcode.Teleop.Objects;
 
 //Import statements
 import com.qualcomm.robotcore.hardware.DcMotor;

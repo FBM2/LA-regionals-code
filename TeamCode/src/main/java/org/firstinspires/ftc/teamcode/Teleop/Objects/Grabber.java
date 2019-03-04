@@ -1,7 +1,7 @@
 //GRABBER created on September 8th by Isaac Dienstag
 
 //Package statement
-package org.firstinspires.ftc.teamcode.Teleop;
+package org.firstinspires.ftc.teamcode.Teleop.Objects;
 
 //Import statements
 import com.qualcomm.robotcore.hardware.CRServo;

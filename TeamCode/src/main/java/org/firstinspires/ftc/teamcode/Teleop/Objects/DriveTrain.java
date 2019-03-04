@@ -1,7 +1,7 @@
 //DRIVETRAIN created by Isaac Dienstag on September 8th
 
 //Package statement
-package org.firstinspires.ftc.teamcode.Teleop;
+package org.firstinspires.ftc.teamcode.Teleop.Objects;
 
 //Import Statements
 import com.qualcomm.robotcore.hardware.DcMotor;
