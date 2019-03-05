@@ -1,16 +1,16 @@
-/** PixyCam created by Isaac Dienstag for ftc team 9804 Bombsquad.
- * This class holds all of the PixyCam variables and methods for autonomous. This class extends
- * Functions for auto in order to have access to all of its variables and methods, but adds new
- * variables that relate to the PixyCam. An autonomous would extend this class if it wanted to
- * run using the PixyCam to determine the gold block's position.
- */
-
 //Package statements
 package org.firstinspires.ftc.teamcode.Auto.HelperClasses;
 
 //Import statements
 import com.qualcomm.robotcore.hardware.I2cAddr;
 import com.qualcomm.robotcore.hardware.I2cDeviceSynch;
+
+/** PixyCam created by Isaac Dienstag for ftc team 9804 Bombsquad.
+ * This class holds all of the PixyCam variables and methods for autonomous. This class extends
+ * Functions for auto in order to have access to all of its variables and methods, but adds new
+ * variables that relate to the PixyCam. An autonomous would extend this class if it wanted to
+ * run using the PixyCam to determine the gold block's position.
+ */
 
 public abstract class PixyCam extends FunctionsForAuto {
     //Pixycam variables
@@ -25,7 +25,7 @@ public abstract class PixyCam extends FunctionsForAuto {
         super.initAll(name,chosenOpMode);
     }
 
-    public void engagePixy(){
+    private void engagePixy(){
         //setting up Pixy to the hardware map
         mineralPos = 0;
         pixySide = hardwareMap.i2cDeviceSynch.get("p1");
@@ -43,7 +43,7 @@ public abstract class PixyCam extends FunctionsForAuto {
         pixySide.engage();
     }
 
-    public void turnRunAndHitWithPixy(int driveTime){
+    protected void turnRunAndHitWithPixy(int driveTime){
         setBothPower(-.3);
         timeOne = this.getRuntime();
         timeTwo = this.getRuntime();
@@ -71,7 +71,7 @@ public abstract class PixyCam extends FunctionsForAuto {
         driveWithEncoders(30, .4, 2);//Drive forward to hit the block
     }
 
-    public void faceAndHitWithPixy(int freedom){
+    protected void faceAndHitWithPixy(int freedom){
 
         //Give the pixyCam time to see everything and set a byte array to the values the front pixyCam sees
         pause(.5);
@@ -104,7 +104,7 @@ public abstract class PixyCam extends FunctionsForAuto {
     }
 
     //Getters
-    public int getMineralPos(){return mineralPos;}
+    protected int getMineralPos(){return mineralPos;}
     public byte[] getPixyData(){return pixyData;}
     public I2cDeviceSynch getPixySide(){return pixySide;}
 }

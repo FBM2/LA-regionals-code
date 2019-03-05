@@ -1,12 +1,3 @@
-/** Lifter created by Isaac Dienstag for team 9804 Bombsquad
- * This class holds all the methods used to function the lifter of the robot. It has one DcMotor,
- * one Servo, and two DigitalChannels. The motor represents the motor used to lift and lower the
- * dumper, the servo represents the servo used to move the position of the dumper, and the
- * DigitalChannels represent whether or not the lifter is at the bottom, and whether or not it is
- * near the top. We use these DigitalChannels in combination with the values given from the main
- * class to determine the power and position of the Motor and Servo
- */
-
 //Package statement
 package org.firstinspires.ftc.teamcode.Teleop.Objects;
 
@@ -17,6 +8,15 @@ import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.Teleop.Mains.TeleopMain;
+
+/** Lifter created by Isaac Dienstag for team 9804 Bombsquad
+ * This class holds all the methods used to function the lifter of the robot. It has one DcMotor,
+ * one Servo, and two DigitalChannels. The motor represents the motor used to lift and lower the
+ * dumper, the servo represents the servo used to move the position of the dumper, and the
+ * DigitalChannels represent whether or not the lifter is at the bottom, and whether or not it is
+ * near the top. We use these DigitalChannels in combination with the values given from the main
+ * class to determine the power and position of the Motor and Servo
+ */
 
 //Class declaration
 public class Lifter extends TeleopMain { //This class has to extend TeleopMain in order to have access to getRuntime() method
@@ -122,9 +122,9 @@ public class Lifter extends TeleopMain { //This class has to extend TeleopMain i
             liftMotor.setPower(0); //Set the power of liftMotor to 0
     } //End void method
 
-    public void lift2(double lift, double drop, boolean doItAll, boolean dropFromTop){
-        if(doItAll){doingItAll = true;}//Set a variable to true if doItAll is true for any amount of time
-        if(dropFromTop){droppingFromTop = true;}//Set a variable to stay true if doItAll is true for any amount of time
+    public void lift2(double lift, double drop, boolean lb, boolean rb){
+        if(lb){doingItAll = true;}//Set a variable to true if doItAll is true for any amount of time
+        if(rb){droppingFromTop = true;}//Set a variable to stay true if doItAll is true for any amount of time
 
         if(!atTop.getState() && drop < .05 && !doingItAll && !droppingFromTop){//If we are seeing the top Sensor and we are not dropping or raising
             time1 = this.getRuntime();//Start running the two timer variables

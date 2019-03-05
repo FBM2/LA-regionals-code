@@ -1,10 +1,3 @@
-/** Grabber created by Isaac Dienstag for team 9804 Bombsquad
- * This class holds all the methods used to function the grabber of the robot. It has two DcMotors,
- * one for the extender and one for the sweeper, and one CRServo for the disrupter. It also has two
- * DigitalChannels representing the SlowState and the store sensors. We use these digital channels
- * along with the variables given to us from the main to determine these motor and servo powers.
- */
-
 //Package statement
 package org.firstinspires.ftc.teamcode.Teleop.Objects;
 
@@ -14,6 +7,13 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.Servo;
+
+/** Grabber created by Isaac Dienstag for team 9804 Bombsquad
+ * This class holds all the methods used to function the grabber of the robot. It has two DcMotors,
+ * one for the extender and one for the sweeper, and one CRServo for the disrupter. It also has two
+ * DigitalChannels representing the SlowState and the store sensors. We use these digital channels
+ * along with the variables given to us from the main to determine these motor and servo powers.
+ */
 
 //Class declorations
 public class Grabber {
@@ -59,10 +59,7 @@ public class Grabber {
     //Uses the boolean as a toggle and uses it to determine whether or not to run the disrupter servo.
     public void reach(double lt, double rt, boolean toggle) {
         if (toggle){ //if toggle is true, signifying we would like to change modes
-            if (!previousStatus) //If previousStatus is false, meaning the previous mode was 'off'
-                currentStatus = true; //Set current mode to true, meaning that we are now in 'on' mode
-            else
-                currentStatus = false; //Set currentStatus to false, meaning that we are now in 'off' mode
+            currentStatus = !previousStatus; //Set current mode to the opposite of the previous mode, meaning that we are now in 'on' mode
         }
         else //(!toggle)
             previousStatus = currentStatus; //Set previousStatus to currentStatus if toggle is false,

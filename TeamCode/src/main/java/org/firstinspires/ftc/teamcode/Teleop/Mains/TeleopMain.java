@@ -1,10 +1,3 @@
-/** TeleopMain created by Isaac Dienstag for Team 9804 Bombsquad
- * This class contains all of the functions for teleop, including use of the Drivetrain, grabbers,
- * Lifters, and hanger. It also returns telemetry continuously for all of the motor powers, servo
- * positions, and current states of digital sensors. It uses objects to control these functions
- * and minimizes the use of its own variables and and tries to simplify code whenever possible.
- */
-
 //Package statements
 package org.firstinspires.ftc.teamcode.Teleop.Mains;
 
@@ -21,14 +14,21 @@ import org.firstinspires.ftc.teamcode.Teleop.Objects.Lifter;
 import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.FORWARD;
 import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.REVERSE;
 
+/** TeleopMain created by Isaac Dienstag for Team 9804 Bombsquad
+ * This class contains all of the functions for teleop, including use of the Drivetrain, grabbers,
+ * Lifters, and hanger. It also returns telemetry continuously for all of the motor powers, servo
+ * positions, and current states of digital sensors. It uses objects to control these functions
+ * and minimizes the use of its own variables and and tries to simplify code whenever possible.
+ */
+
 //Declaration for display on the driver station
 @TeleOp(name = "TeleopMain")
 
 public class TeleopMain extends OpMode {
 
 
-    DriveTrain DT; Grabber GB; Lifter LT; Hanger HG;//Robot object declarations
-    int loopCounter; double timeOne, timeTwo;//Telemetry variables
+    private DriveTrain DT; private Grabber GB; private Lifter LT; private Hanger HG;//Robot object declarations
+    private int loopCounter; private double timeOne, timeTwo;//Telemetry variables
 
     //Init method required by OpMode. Initializes all of our RobotObjects and initializes the servo positions where needed
     public void init(){

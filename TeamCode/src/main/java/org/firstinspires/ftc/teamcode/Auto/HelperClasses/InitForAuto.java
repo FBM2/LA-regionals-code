@@ -1,11 +1,3 @@
-/** InitForAuto created by Isaac Dienstag for ftc team 9804 Bombsquad.
- * This class contains all of the private instance variables for the baseline autonomous
- * and all of the initialization methods (methods we run on initialization of auto). This
- * serves to calibrate our gyroscope, initalize the motors, servos, and digital channels to
- * the heardwaremap, and gives access to the private instance variables through setters and
- * getters.
- */
-
 //Package statement
 package org.firstinspires.ftc.teamcode.Auto.HelperClasses;
 
@@ -27,6 +19,14 @@ import org.firstinspires.ftc.teamcode.AutoTransitioner;
 
 import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.FORWARD;
 import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.REVERSE;
+
+/** InitForAuto created by Isaac Dienstag for ftc team 9804 Bombsquad.
+ * This class contains all of the private instance variables for the baseline autonomous
+ * and all of the initialization methods (methods we run on initialization of auto). This
+ * serves to calibrate our gyroscope, initalize the motors, servos, and digital channels to
+ * the heardwaremap, and gives access to the private instance variables through setters and
+ * getters.
+ */
 
 public abstract class InitForAuto extends LinearOpMode {
 
@@ -105,7 +105,7 @@ public abstract class InitForAuto extends LinearOpMode {
     }
 
     //Initialize the Motors to the hardwaremap
-    public void initMotors(String left, String right, String lift, String extend, String sweep, String hang){
+    protected void initMotors(String left, String right, String lift, String extend, String sweep, String hang){
         this.left = hardwareMap.dcMotor.get(left);
         this.right = hardwareMap.dcMotor.get(right);
         lifter = hardwareMap.dcMotor.get(lift);
@@ -115,7 +115,7 @@ public abstract class InitForAuto extends LinearOpMode {
     }
 
     //Initialize the motor directions
-    public void initMotorDirections(DcMotorSimple.Direction leftD, DcMotorSimple.Direction rightD, DcMotorSimple.Direction liftD,
+    protected void initMotorDirections(DcMotorSimple.Direction leftD, DcMotorSimple.Direction rightD, DcMotorSimple.Direction liftD,
                                     DcMotorSimple.Direction extendD, DcMotorSimple.Direction sweepD, DcMotorSimple.Direction hangD) {
         left.setDirection(leftD);
         right.setDirection(rightD);
@@ -126,13 +126,13 @@ public abstract class InitForAuto extends LinearOpMode {
     }
 
     //Initialize the Servos to the hardwaremap
-    public void initServos(String dump, String swap){
+    protected void initServos(String dump, String swap){
         dumper = hardwareMap.servo.get(dump);
         swapper = hardwareMap.servo.get(swap);
     }
 
     //Initialize the DigitalChannels to the hardwaremap
-    public void initDigitals(String spinner, String isUp, String isDown, String isIn){
+    protected void initDigitals(String spinner, String isUp, String isDown, String isIn){
         spin = hardwareMap.get(DigitalChannel.class, spinner);
         top = hardwareMap.get(DigitalChannel.class, isUp);
         bottom = hardwareMap.get(DigitalChannel.class, isDown);
@@ -140,7 +140,7 @@ public abstract class InitForAuto extends LinearOpMode {
     }
 
     //Initialize the IMU
-    public void init(String newIMU){
+    protected void init(String newIMU){
 
         BNO055IMU.Parameters IMUparameters = new BNO055IMU.Parameters();
         IMUparameters.mode                = BNO055IMU.SensorMode.IMU;
@@ -156,18 +156,18 @@ public abstract class InitForAuto extends LinearOpMode {
         imu.initialize(IMUparameters); //Initialize the IMU
     }
 
-    public void transition(String teleop){
+    private void transition(String teleop){
         if(!teleop.equalsIgnoreCase(""))
             AutoTransitioner.transitionOnStop(this, teleop);
     }
 
-    public void resetAngle() {
+    private void resetAngle() {
         lastAngles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
 
         globalAngle = 0;
     }
 
-    public void chooseToDrop(){
+    private void chooseToDrop(){
         chosen = false;
         confirmed = false;
         while(!confirmed && !isStopRequested()){
@@ -234,49 +234,49 @@ public abstract class InitForAuto extends LinearOpMode {
     }
 
     //Set the ZeroPowerBehavior of our motors to BRAKE so movement is more consistant and we don't slide
-    public void setZeroPow(){
+    protected void setZeroPow(){
         left.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         right.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
     //Set the power of both motors to the reverse of pow
-    public void setBothPower(double pow){
+    protected void setBothPower(double pow){
         right.setPower(-pow);
         left.setPower(-pow);
     }
 
     //Setter Statements
-    public void setRightPower(double pow){right.setPower(-pow);}
-    public void setLeftPower(double pow){left.setPower(-pow);}
-    public void setLifterPower(double pow){lifter.setPower(pow);}
-    public void setExtenderPower(double pow){extender.setPower(pow);}
-    public void setSweeperPower(double pow){sweeper.setPower(pow);}
-    public void setHangerPower(double pow){hanger.setPower(pow);}
-    public void setSwapperPosition(double pos){swapper.setPosition(pos);}
-    public void setDumperPosition(double pos){dumper.setPosition(pos);}
-    public void setEncoderCountsTelemetry(double num){encoderCounts.setValue(num);}
-    public void setIMUAngleTelemetry(double num){imuAngle.setValue(num);}
-    public void setGoldMineralPosTelemetry(String pos){goldMineralPos.setValue(pos);}
-    public void setTimeoutTelemetry(double num){timeout.setValue(num);}
-    public void setObjectsDetected(int num){objectsDetected.setValue(num);}
-    public void setAutoNameTelemetry(String name){autoName.setValue(name);}
+    protected void setRightPower(double pow){right.setPower(-pow);}
+    protected void setLeftPower(double pow){left.setPower(-pow);}
+    protected void setLifterPower(double pow){lifter.setPower(pow);}
+    protected void setExtenderPower(double pow){extender.setPower(pow);}
+    protected void setSweeperPower(double pow){sweeper.setPower(pow);}
+    protected void setHangerPower(double pow){hanger.setPower(pow);}
+    protected void setSwapperPosition(double pos){swapper.setPosition(pos);}
+    protected void setDumperPosition(double pos){dumper.setPosition(pos);}
+    protected void setEncoderCountsTelemetry(double num){encoderCounts.setValue(num);}
+    protected void setIMUAngleTelemetry(double num){imuAngle.setValue(num);}
+    protected void setGoldMineralPosTelemetry(String pos){goldMineralPos.setValue(pos);}
+    protected void setTimeoutTelemetry(double num){timeout.setValue(num);}
+    protected void setObjectsDetected(int num){objectsDetected.setValue(num);}
+    protected void setAutoNameTelemetry(String name){autoName.setValue(name);}
 
     //Getter Statements
-    public double getRightPosition(){return right.getCurrentPosition();}
-    public double getLeftPosition(){return left.getCurrentPosition();}
-    public double getLeftPower(){return right.getPower();}
-    public double getRightPower(){return left.getPower();}
-    public double getLifterPower(){return lifter.getPower();}
-    public double getExtenderPower(){return extender.getPower();}
-    public double getSweeperPower(){return sweeper.getPower();}
-    public double getHangerPower(){return hanger.getPower();}
-    public double getSwapperPosition(){return swapper.getPosition();}
-    public double getDumperPosition(){return dumper.getPosition();}
-    public boolean getSpinnerPosition(){return spin.getState();}
-    public boolean getUpState(){return top.getState();}
-    public boolean getBottomState(){return bottom.getState();}
-    public boolean getInState(){return in.getState();}
-    public boolean isImuCalibrated(){return imu.isGyroCalibrated();}
-    public double getCounts(){return counts;}
-    public double getGlobalAngle(){return globalAngle;}
+    protected double getRightPosition(){return right.getCurrentPosition();}
+    protected double getLeftPosition(){return left.getCurrentPosition();}
+    protected double getLeftPower(){return right.getPower();}
+    protected double getRightPower(){return left.getPower();}
+    protected double getLifterPower(){return lifter.getPower();}
+    protected double getExtenderPower(){return extender.getPower();}
+    protected double getSweeperPower(){return sweeper.getPower();}
+    protected double getHangerPower(){return hanger.getPower();}
+    protected double getSwapperPosition(){return swapper.getPosition();}
+    protected double getDumperPosition(){return dumper.getPosition();}
+    protected boolean getSpinnerPosition(){return spin.getState();}
+    protected boolean getUpState(){return top.getState();}
+    protected boolean getBottomState(){return bottom.getState();}
+    protected boolean getInState(){return in.getState();}
+    protected boolean isImuCalibrated(){return imu.isGyroCalibrated();}
+    protected double getCounts(){return counts;}
+    protected double getGlobalAngle(){return globalAngle;}
 }

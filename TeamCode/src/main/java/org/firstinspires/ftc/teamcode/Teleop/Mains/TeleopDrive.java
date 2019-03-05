@@ -1,8 +1,3 @@
-/** TeleopDrive created by Isaac Dienstag for Team 9804 Bombsquad
- * This class contains only the driving function for teleop. It also returns telemetry continuously
- * for the two motor powers.
- */
-
 //Package statements
 package org.firstinspires.ftc.teamcode.Teleop.Mains;
 
@@ -15,17 +10,22 @@ import org.firstinspires.ftc.teamcode.Teleop.Objects.DriveTrain;
 import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.FORWARD;
 import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.REVERSE;
 
+/** TeleopDrive created by Isaac Dienstag for Team 9804 Bombsquad
+ * This class contains only the driving function for teleop. It also returns telemetry continuously
+ * for the two motor powers.
+ */
+
 //Declaration for display on the driver station
-@TeleOp(name = "TeleOp Drive")
+@TeleOp(name = "Teleop Drive")
 public class TeleopDrive extends OpMode {
 
     //Object Declarations
-    DriveTrain DT;
+    private DriveTrain DT;
 
 
     //Telemetry variables
-    int loopCounter;
-    double timeOne, timeTwo;
+    private int loopCounter;
+    private double timeOne, timeTwo;
 
     public void init(){
         //Initialize our objects to the hardwareMap

@@ -1,10 +1,3 @@
-/** Hanger created by Isaac Dienstag for team 9804 Bombsquad
- * This class holds all the methods used to function the hanger of the robot. It only has one DcMotor
- * and one servo. The motor represents the hanger motor used to raise and lower us, and the servo
- * represents the pin we pull out of the robot to unlock the hanger. We determine the power of the
- * motors based on the variables given to use from the main class.
- */
-
 //Package declaration
 package org.firstinspires.ftc.teamcode.Teleop.Objects;
 
@@ -12,6 +5,13 @@ package org.firstinspires.ftc.teamcode.Teleop.Objects;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
+
+/** Hanger created by Isaac Dienstag for team 9804 Bombsquad
+ * This class holds all the methods used to function the hanger of the robot. It only has one DcMotor
+ * and one servo. The motor represents the hanger motor used to raise and lower us, and the servo
+ * represents the pin we pull out of the robot to unlock the hanger. We determine the power of the
+ * motors based on the variables given to use from the main class.
+ */
 
 //Class declaration
 public class Hanger {

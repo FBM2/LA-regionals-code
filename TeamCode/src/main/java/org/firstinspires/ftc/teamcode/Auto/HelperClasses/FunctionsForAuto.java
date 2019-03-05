@@ -1,15 +1,3 @@
-/** FunctionsForAuto created by Isaac Dienstag for ftc team 9804 Bombsquad.
- * This class contains all of the functions used during the duration of the base autonomous.
- * This class extends InitForAuto in order to communicate with the same instance variables in the
- * autonomous. It contains methods in order to turn using the gyroscope, move with encoders, as well
- * as any specialized movements such as dropping from hang and dropping our marker.
- * Finally, this class includes a multithread in order to constantly return the current angle of our
- * robot. This serves the purpose of having more precise telemetry as well as increases our precision
- * when turning because we are able to simply call the variable that refers to the angle of our robot
- * when turning.
- */
-
-
 //Package statement
 package org.firstinspires.ftc.teamcode.Auto.HelperClasses;
 
@@ -21,12 +9,22 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
+/** FunctionsForAuto created by Isaac Dienstag for ftc team 9804 Bombsquad.
+ * This class contains all of the functions used during the duration of the base autonomous.
+ * This class extends InitForAuto in order to communicate with the same instance variables in the
+ * autonomous. It contains methods in order to turn using the gyroscope, move with encoders, as well
+ * as any specialized movements such as dropping from hang and dropping our marker.
+ * Finally, this class includes a multithread in order to constantly return the current angle of our
+ * robot. This serves the purpose of having more precise telemetry as well as increases our precision
+ * when turning because we are able to simply call the variable that refers to the angle of our robot
+ * when turning.
+ */
+
 public abstract class FunctionsForAuto extends InitForAuto {
 
-    double currentAngle;
+    private double currentAngle;
 
-    public double getAngle()
-    {
+    private double getAngle() {
         // We experimentally determined the Z axis is the axis we want to use for heading angle.
         // We have to process the angle because the imu works in euler angles so the Z axis is
         // returned as 0 to +180 or 0 to -180 rolling back to -179 or +179 when rotation passes
@@ -66,7 +64,7 @@ public abstract class FunctionsForAuto extends InitForAuto {
         return correction;
     }
 
-    public void rotate(int degrees, double power, double time, String description) {
+    protected void rotate(int degrees, double power, double time, String description) {
             double leftPower, rightPower;
             // restart imu movement tracking.
             // currentAngle returns + when rotating counter clockwise (left) and - when rotating
@@ -113,7 +111,7 @@ public abstract class FunctionsForAuto extends InitForAuto {
     }
 
     //drive forward a certain distance at a speed of power
-    public void driveWithEncoders(double distance, double power, double time, String description) {
+    protected void driveWithEncoders(double distance, double power, double time, String description) {
 
         right.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         left.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -169,7 +167,7 @@ public abstract class FunctionsForAuto extends InitForAuto {
     }
 
     //Drop from hang and turn towards the corner
-    public void dropFromHang(){
+    protected void dropFromHang(){
         if(shouldWeDrop){ //Only run the dropFromHang method if shouldWeDrop is true
             hanger.setPower(-.8);
             pause(.1);
@@ -186,7 +184,7 @@ public abstract class FunctionsForAuto extends InitForAuto {
     //Drops the marker in front of our robot and re-intakes the extender
     //A negative power is applied to the extender indefinetely in order
     //to be sure that it does not fall down in front of our robot again
-    public void dropMarker(){
+    protected void dropMarker(){
         extender.setPower(.25);
         pause(1);
         extender.setPower(0);
@@ -200,7 +198,7 @@ public abstract class FunctionsForAuto extends InitForAuto {
     }
 
     //Wait for time before moving onto the next code
-    public void pause(double time) {
+    protected void pause(double time) {
         double timeOne = this.getRuntime();
         double timeTwo = this.getRuntime();
         while (timeTwo - timeOne < time && !isStopRequested()) {
@@ -234,7 +232,7 @@ public abstract class FunctionsForAuto extends InitForAuto {
 
     //OUTDATED METHODS
 
-    public void rotate(int degrees, double power, double time) {
+    protected void rotate(int degrees, double power, double time) {
         double leftPower, rightPower;
         // restart imu movement tracking.
         // currentAngle returns + when rotating counter clockwise (left) and - when rotating
@@ -280,7 +278,7 @@ public abstract class FunctionsForAuto extends InitForAuto {
     }
 
     //drive forward a certain distance at a speed of power
-    public void driveWithEncoders(double distance, double power, double time) {
+    protected void driveWithEncoders(double distance, double power, double time) {
 
         right.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         left.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);

@@ -1,10 +1,3 @@
-/** TensorFlow created by Isaac Dienstag for ftc team 9804 Bombsquad.
- * This class holds all of the TensorFlow variables and methods for autonomous. This class extends
- * Functions for auto in order to have access to all of its variables and methods, but adds new
- * variables that relate to Tfod or Vuforia. An autonomous would extend this class if it wanted to
- * run using TensorFlow rather than a pixyCam to find the position of the gold block.
- */
-
 //Package statement
 package org.firstinspires.ftc.teamcode.Auto.HelperClasses;
 
@@ -16,6 +9,13 @@ import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
 
 import java.util.List;
 
+/** TensorFlow created by Isaac Dienstag for ftc team 9804 Bombsquad.
+ * This class holds all of the TensorFlow variables and methods for autonomous. This class extends
+ * Functions for auto in order to have access to all of its variables and methods, but adds new
+ * variables that relate to Tfod or Vuforia. An autonomous would extend this class if it wanted to
+ * run using TensorFlow rather than a pixyCam to find the position of the gold block.
+ */
+
 public abstract class TensorFlow extends FunctionsForAuto {
     //VARIABLES
     private static final String TFOD_MODEL_ASSET = "RoverRuckus.tflite";
@@ -23,15 +23,15 @@ public abstract class TensorFlow extends FunctionsForAuto {
     private static final String LABEL_SILVER_MINERAL = "Silver Mineral";
 
     //VUFORIA KEY
-    static final String VUFORIA_KEY = "AddZzkT/////AAABmSxhRyXVhERymcDDAqXjSLxPBSj7vrOCGnAgNqK2yX+PrnaXklRi9Ww5MMvm0dPFj37E5RC9NxZZ/q3WPN37eLcbqO" +
+    private static final String VUFORIA_KEY = "AddZzkT/////AAABmSxhRyXVhERymcDDAqXjSLxPBSj7vrOCGnAgNqK2yX+PrnaXklRi9Ww5MMvm0dPFj37E5RC9NxZZ/q3WPN37eLcbqO" +
             "Nig/Dg2hKS3oreDEw03w87bSzQxAZszzxQG8RsiWEi6r0LXZCFaWd6E858A+y3uGR0600w43rOjTnu+itNFvC8rOMfJSg45mTXz5/f3Cr4nguP3WodRL1KHQZoIXU508B00V200" +
             "VOYYcdDc56fgUKX3FQ+WthdaOq9PTRhQYNut39aQBLZRHyfv8u4ynFrgDWuQ9F/J30pIg2zGtv5Zl3hBL8bsRQsQA5+uSihSefyvFoQYLbon6w8ZzppJHTUzTzZ1+yP/8uROrCc2aoz";
 
     //Vuforia variable declaration
-    VuforiaLocalizer vuforia;
+    private VuforiaLocalizer vuforia;
 
     //tfod variable declaration
-    TFObjectDetector tfod;
+    private TFObjectDetector tfod;
 
     public void initAll(String name, String chosenOpMode){
         initVuforia(); //Initialze the vuforia camera and vuforia
@@ -51,7 +51,7 @@ public abstract class TensorFlow extends FunctionsForAuto {
         super.initAll(name, chosenOpMode);
     }
     //Initialize the Vuforia localization engines
-    public void initVuforia(){
+    protected void initVuforia(){
         /*
          * Configure Vuforia by creating a Parameter object, and passing it to the Vuforia engine.
          */
@@ -66,7 +66,7 @@ public abstract class TensorFlow extends FunctionsForAuto {
     }
 
     //Initialize the Tfod
-    public void initTfod() {
+    protected void initTfod() {
         int tfodMonitorViewId = hardwareMap.appContext.getResources().getIdentifier(
                 "tfodMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         TFObjectDetector.Parameters tfodParameters = new TFObjectDetector.Parameters(tfodMonitorViewId);
@@ -76,13 +76,13 @@ public abstract class TensorFlow extends FunctionsForAuto {
 
     //Returns the Recognition of the goldBlock that is value of the lowest gold on screen,
     //return null if there is no gold found
-    public Recognition getGoldBlock(double waitTime) {
+    protected Recognition getGoldBlock(double waitTime) {
         if (opModeIsActive()) {
 
             int goldX = -1;
             Recognition goldBlock = null;
 
-            /** Activate Tensor Flow Object Detection. */
+            //Activate Tensor Flow Object Detection.
             if (tfod != null) {
                 tfod.activate();
             }
@@ -121,7 +121,7 @@ public abstract class TensorFlow extends FunctionsForAuto {
     //Find the position of the gold using if you only see the left two blocks
     public int findPositionTwo() {
         if (opModeIsActive()) {
-            /** Activate Tensor Flow Object Detection. */
+            //Activate Tensor Flow Object Detection.
             if (tfod != null) {
                 tfod.activate();
             }
@@ -184,7 +184,7 @@ public abstract class TensorFlow extends FunctionsForAuto {
     public boolean seeGold(double searchTime){
         if (opModeIsActive()) {
 
-            /** Activate Tensor Flow Object Detection. */
+            //Activate Tensor Flow Object Detection.
             if (tfod != null) {
                 tfod.activate();
             }
