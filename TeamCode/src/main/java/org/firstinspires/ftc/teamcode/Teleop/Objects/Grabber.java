@@ -1,4 +1,9 @@
-//GRABBER created by Isaac Dienstag for team 9804 Bombsquad
+/** Grabber created by Isaac Dienstag for team 9804 Bombsquad
+ * This class holds all the methods used to function the grabber of the robot. It has two DcMotors,
+ * one for the extender and one for the sweeper, and one CRServo for the disrupter. It also has two
+ * DigitalChannels representing the SlowState and the store sensors. We use these digital channels
+ * along with the variables given to us from the main to determine these motor and servo powers.
+ */
 
 //Package statement
 package org.firstinspires.ftc.teamcode.Teleop.Objects;

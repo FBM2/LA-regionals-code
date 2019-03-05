@@ -1,5 +1,4 @@
-/**
- * Created by Isaac Dienstag for ftc team 9804 Bombsquad.
+/** InitForAuto created by Isaac Dienstag for ftc team 9804 Bombsquad.
  * This class contains all of the private instance variables for the baseline autonomous
  * and all of the initialization methods (methods we run on initialization of auto). This
  * serves to calibrate our gyroscope, initalize the motors, servos, and digital channels to

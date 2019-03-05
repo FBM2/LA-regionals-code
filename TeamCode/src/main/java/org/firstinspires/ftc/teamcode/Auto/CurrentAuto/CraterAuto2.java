@@ -1,5 +1,4 @@
-/**
- * Created by Isaac Dienstag for ftc team 9804 Bombsquad.
+/** CraterAuto2 created by Isaac Dienstag for ftc team 9804 Bombsquad.
  * This is the main class for autonomous when starting on the side facing the crater. This class
  * extends TensorFlow because it uses the phone's camera along with vuforia in order to determine
  * the position of the gold block in autonomous.

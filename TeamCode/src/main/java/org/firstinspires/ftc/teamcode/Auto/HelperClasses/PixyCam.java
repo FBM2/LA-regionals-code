@@ -1,5 +1,4 @@
-/**
- * Created by Isaac Dienstag for ftc team 9804 Bombsquad.
+/** PixyCam created by Isaac Dienstag for ftc team 9804 Bombsquad.
  * This class holds all of the PixyCam variables and methods for autonomous. This class extends
  * Functions for auto in order to have access to all of its variables and methods, but adds new
  * variables that relate to the PixyCam. An autonomous would extend this class if it wanted to

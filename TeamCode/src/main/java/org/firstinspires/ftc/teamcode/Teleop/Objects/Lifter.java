@@ -1,4 +1,11 @@
-//LIFTER created by Isaac Dienstag on team 9804 Bombsqaud
+/** Lifter created by Isaac Dienstag for team 9804 Bombsquad
+ * This class holds all the methods used to function the lifter of the robot. It has one DcMotor,
+ * one Servo, and two DigitalChannels. The motor represents the motor used to lift and lower the
+ * dumper, the servo represents the servo used to move the position of the dumper, and the
+ * DigitalChannels represent whether or not the lifter is at the bottom, and whether or not it is
+ * near the top. We use these DigitalChannels in combination with the values given from the main
+ * class to determine the power and position of the Motor and Servo
+ */
 
 //Package statement
 package org.firstinspires.ftc.teamcode.Teleop.Objects;

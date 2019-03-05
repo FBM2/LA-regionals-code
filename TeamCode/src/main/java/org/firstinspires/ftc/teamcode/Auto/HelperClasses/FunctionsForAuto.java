@@ -1,12 +1,11 @@
-/**
- * Created by Isaac Dienstag for ftc team 9804 Bombsquad.
+/** FunctionsForAuto created by Isaac Dienstag for ftc team 9804 Bombsquad.
  * This class contains all of the functions used during the duration of the base autonomous.
  * This class extends InitForAuto in order to communicate with the same instance variables in the
  * autonomous. It contains methods in order to turn using the gyroscope, move with encoders, as well
  * as any specialized movements such as dropping from hang and dropping our marker.
- * This class finally includes a multithread in order to constantly return the current angle of our
+ * Finally, this class includes a multithread in order to constantly return the current angle of our
  * robot. This serves the purpose of having more precise telemetry as well as increases our precision
- * when turning because we are able to simply call the variable that reffers to the angle of our robot
+ * when turning because we are able to simply call the variable that refers to the angle of our robot
  * when turning.
  */
 

@@ -1,4 +1,7 @@
-//DRIVETRAIN created by Isaac Dienstag for team 9804 Bombsquad
+/** DriveTrain created by Isaac Dienstag for team 9804 Bombsquad
+ * This class holds all the methods used to drive the robot. It has two DcMotors representing the
+ * two sides of the robot, and takes in powers to convert them to motor powers.
+ */
 
 //Package statement
 package org.firstinspires.ftc.teamcode.Teleop.Objects;

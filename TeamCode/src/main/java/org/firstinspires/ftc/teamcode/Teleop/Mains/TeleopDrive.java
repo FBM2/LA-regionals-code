@@ -1,4 +1,7 @@
-//TELEOPMAIN created on September 8th by Isaac Dienstag
+/** TeleopDrive created by Isaac Dienstag for Team 9804 Bombsquad
+ * This class contains only the driving function for teleop. It also returns telemetry continuously
+ * for the two motor powers.
+ */
 
 //Package statements
 package org.firstinspires.ftc.teamcode.Teleop.Mains;

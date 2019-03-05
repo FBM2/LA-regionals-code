@@ -1,4 +1,9 @@
-//TELEOPMAIN created by Isaac Dienstag for Team 9804 Bombsquad
+/** TeleopMain created by Isaac Dienstag for Team 9804 Bombsquad
+ * This class contains all of the functions for teleop, including use of the Drivetrain, grabbers,
+ * Lifters, and hanger. It also returns telemetry continuously for all of the motor powers, servo
+ * positions, and current states of digital sensors. It uses objects to control these functions
+ * and minimizes the use of its own variables and and tries to simplify code whenever possible.
+ */
 
 //Package statements
 package org.firstinspires.ftc.teamcode.Teleop.Mains;
