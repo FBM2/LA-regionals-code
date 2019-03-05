@@ -1,4 +1,4 @@
-//LIFTER created on September 8th by Isaac Dienstag
+//LIFTER created by Isaac Dienstag on team 9804 Bombsqaud
 
 //Package statement
 package org.firstinspires.ftc.teamcode.Teleop.Objects;

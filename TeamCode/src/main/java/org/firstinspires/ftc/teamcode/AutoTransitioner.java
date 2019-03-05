@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
 import org.firstinspires.ftc.robotcore.internal.opmode.OpModeManagerImpl;
 
-/**
+/** Thanks to KNO3 Robotics for letting us use this autoTransitioner code!
  * Created by KNO3 Robotics
  * AutoTransitioner is a utility to automatically initialize the teleop program of your choice
  * after the autonomous period ends. To use AutoTransitioner, go to your OpMode/LinearOpMode,

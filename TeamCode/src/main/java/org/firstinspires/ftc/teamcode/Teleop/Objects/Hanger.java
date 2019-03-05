@@ -1,4 +1,4 @@
-//HANGER created by Isaac Dienstag on October 21st
+//HANGER created by Isaac Dienstag for tema 9804 Bombsquad
 
 //Package declaration
 package org.firstinspires.ftc.teamcode.Teleop.Objects;

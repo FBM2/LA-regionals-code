@@ -1,4 +1,4 @@
-//DRIVETRAIN created by Isaac Dienstag on September 8th
+//DRIVETRAIN created by Isaac Dienstag for team 9804 Bombsquad
 
 //Package statement
 package org.firstinspires.ftc.teamcode.Teleop.Objects;

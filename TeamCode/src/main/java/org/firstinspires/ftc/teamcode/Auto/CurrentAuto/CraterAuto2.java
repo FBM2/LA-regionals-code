@@ -1,7 +1,14 @@
+/**
+ * Created by Isaac Dienstag for ftc team 9804 Bombsquad.
+ * This is the main class for autonomous when starting on the side facing the crater. This class
+ * extends TensorFlow because it uses the phone's camera along with vuforia in order to determine
+ * the position of the gold block in autonomous.
+ */
+
+//Package statement
 package org.firstinspires.ftc.teamcode.Auto.CurrentAuto;
 
 //Import Statements
-
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
@@ -19,15 +26,18 @@ public class CraterAuto2 extends TensorFlow {
     //Main OpMode method
     public void runOpMode() {
 
+        //Create a new thread for our telemetry that will run parallel to this one
         TelemetryThread th = new TelemetryThread("TelThread");
 
-        initAll("Crater Auto 2", "TeleopMain");//Init all motors, servos, and sensors (including gyro imu, Tfod, and vuforia)
 
-        waitForStart();
+        //Initialize all motors, servos, and sensors (including gyro imu, Tfod, and vuforia)
+        //with our name as Crater Auto 2. Transition to TeleopMain after this opmode is over
+        initAll("Crater Auto 2", "TeleopMain");
 
-        resetStartTime();
+        waitForStart();//Wait for us to start the autonomous
+        resetStartTime();//Reset the start time once we press play
 
-        lowestGold = getGoldBlock(1);
+        lowestGold = getGoldBlock(1);//Take 1 second to look for the lowest gold block on screen
 
         if(lowestGold == null || ((int)lowestGold.getTop()) > 900) { //Return the l/c/r position of the gold mineral
             setGoldMineralPosTelemetry("Right");
@@ -40,9 +50,13 @@ public class CraterAuto2 extends TensorFlow {
             centerBlock = true;
         }telemetry.update();
 
+        //Start the telemetry child thread that will continuously return our current angle on screen
+        //as well as set the angle to a variable for use in our imu turns
         th.startThread();
 
-        //We start hanging, so we haft to drop
+        //We start hanging, so we call the method dropFromHang(), which pulls out the lock,
+        //lowers us down, and unlaches us from the lander, followed by an imu turn to make us
+        //parallel to the lander
         dropFromHang();
 
         //Run our robot to the corner to drop our marker
@@ -54,9 +68,10 @@ public class CraterAuto2 extends TensorFlow {
 
         //Call the method dropMarker(), which extends our intake and runs the intake outwards,
         //which pushes the marker out of our robot. It then retracts the intake and runs the extender
-        //at a constant -.2 power, so it doesn't fall down again on the feild, messing us up and damaging the intake
+        //at a constant -.2 power, so it doesn't fall down again on the field, messing us up and damaging the intake
         dropMarker();
 
+        //Realign to make sure we do not hit our teammate's right block and drive back to our crater
         rotate(130  ,.35,5, "Allign to wall");
 
         //Drive back and realign with the lander
@@ -82,11 +97,18 @@ public class CraterAuto2 extends TensorFlow {
             rotate(7, .35, 7, "Turn towards center block");
         }
 
-        //Drive forward to hit the block and partially park in the crater
-        driveWithEncoders(30, .4, 2, "Drive forward and hit block");
+        //Drive forward to hit the block and partially park in the crater, but if the block is center
+        //Drive forward for a shorter period so we do not wedge the block on the crater
+        if(!rightBlock)
+            driveWithEncoders(30, .4, 2, "Drive forward and hit block");
+        else
+            driveWithEncoders(15,.35,2, "Drive forward and hit block");
+
+        //Extend our extender down to ensure we are parked
         setExtenderPower(.25);
         pause(1);
         setExtenderPower(0);
+
     } //Ends runOpMode method
 } //Ends class
 

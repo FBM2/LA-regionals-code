@@ -1,4 +1,4 @@
-//TELEOPMAIN created on September 8th by Isaac Dienstag
+//TELEOPMAIN created by Isaac Dienstag for Team 9804 Bombsquad
 
 //Package statements
 package org.firstinspires.ftc.teamcode.Teleop.Mains;
@@ -97,13 +97,13 @@ public class TeleopMain extends OpMode {
         telemetry.addLine(); //Gap between time Motor and servo telemetry
         telemetry.addLine("Servos: "); //Servo header
         telemetry.addData("Disrupter Power: ", GB.getDisrupterPower()); //The power of the disrupter CR servo
-        telemetry.addData("Dump Position:", LT.getDumpPosition()); //The poisition of the dump servo
+        telemetry.addData("Dump Position:", LT.getDumpPosition()); //The position of the dump servo
         telemetry.addData("Swapper Position:", HG.getSwapperPosition()); //The position of the swapper servo
         telemetry.addLine(); //Gap between servo telemetry and sensor telemetry
         telemetry.addLine("Sensors: "); //Sensor header
         telemetry.addData("Slow State: ", GB.getSlowState()); //The current state of the slow sensor
         telemetry.addData("Top State: ", LT.getTopState()); //The current state of the  atTop sensor
-        telemetry.addData("Bottom State: ", LT.getBottomState()); //The current state of the atBottom sensoe
+        telemetry.addData("Bottom State: ", LT.getBottomState()); //The current state of the atBottom sensor
         telemetry.update(); //Update every loop
 
     } //Ends loop

@@ -1,4 +1,4 @@
-//GRABBER created on September 8th by Isaac Dienstag
+//GRABBER created by Isaac Dienstag for team 9804 Bombsquad
 
 //Package statement
 package org.firstinspires.ftc.teamcode.Teleop.Objects;

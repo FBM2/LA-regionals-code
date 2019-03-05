@@ -1,5 +1,16 @@
+/**
+ * Created by Isaac Dienstag for ftc team 9804 Bombsquad.
+ * This class holds all of the TensorFlow variables and methods for autonomous. This class extends
+ * Functions for auto in order to have access to all of its variables and methods, but adds new
+ * variables that relate to Tfod or Vuforia. An autonomous would extend this class if it wanted to
+ * run using TensorFlow rather than a pixyCam to find the position of the gold block.
+ */
+
+
+//Package statement
 package org.firstinspires.ftc.teamcode.Auto.HelperClasses;
 
+//Import statements
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.tfod.Recognition;

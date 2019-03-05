@@ -29,8 +29,9 @@ public class CameraTest extends TensorFlow {
 
         hit = false; //set hit variable to false
 
-        initAll("Camera Test", "TeleopMain");//Init all motors, servos, and sensors (including gyro imu, Tfod, and vuforia)
-        //Automatically transition to TeleopMain when we finish this auto
+        initAll("Camera Test", "TeleopMain");//Init all motors, servos, and sensors
+        //(including gyro imu, Tfod, and vuforia), Automatically transition to TeleopMain when we finish this auto
+        //
 
         waitForStart(); //Wait for us to start the autonomous
 
