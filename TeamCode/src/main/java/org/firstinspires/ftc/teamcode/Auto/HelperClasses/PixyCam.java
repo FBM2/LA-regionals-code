@@ -9,8 +9,7 @@ import com.qualcomm.robotcore.hardware.I2cDeviceSynch;
  * This class holds all of the PixyCam variables and methods for autonomous. This class extends
  * Functions for auto in order to have access to all of its variables and methods, but adds new
  * variables that relate to the PixyCam. An autonomous would extend this class if it wanted to
- * run using the PixyCam to determine the gold block's position.
- */
+ * run using the PixyCam to determine the gold block's position. */
 
 public abstract class PixyCam extends FunctionsForAuto {
     //Pixycam variables

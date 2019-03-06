@@ -17,8 +17,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
  * Finally, this class includes a multithread in order to constantly return the current angle of our
  * robot. This serves the purpose of having more precise telemetry as well as increases our precision
  * when turning because we are able to simply call the variable that refers to the angle of our robot
- * when turning.
- */
+ * when turning. */
 
 public abstract class FunctionsForAuto extends InitForAuto {
 

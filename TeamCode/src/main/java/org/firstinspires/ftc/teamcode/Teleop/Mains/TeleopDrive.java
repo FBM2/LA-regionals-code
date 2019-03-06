@@ -12,8 +12,7 @@ import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.REVERSE;
 
 /** TeleopDrive created by Isaac Dienstag for Team 9804 Bombsquad
  * This class contains only the driving function for teleop. It also returns telemetry continuously
- * for the two motor powers.
- */
+ * for the two motor powers. */
 
 //Declaration for display on the driver station
 @TeleOp(name = "Teleop Drive")

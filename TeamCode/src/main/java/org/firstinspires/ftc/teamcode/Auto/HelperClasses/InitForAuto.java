@@ -25,8 +25,7 @@ import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.REVERSE;
  * and all of the initialization methods (methods we run on initialization of auto). This
  * serves to calibrate our gyroscope, initalize the motors, servos, and digital channels to
  * the heardwaremap, and gives access to the private instance variables through setters and
- * getters.
- */
+ * getters. */
 
 public abstract class InitForAuto extends LinearOpMode {
 

@@ -9,13 +9,12 @@ import org.firstinspires.ftc.teamcode.Auto.HelperClasses.FunctionsForAuto;
 
 /** DriveTrain created by Isaac Dienstag for team 9804 Bombsquad
  * This class holds all the methods used to drive the robot. It has two DcMotors representing the
- * two sides of the robot, and takes in powers to convert them to motor powers.
- */
+ * two sides of the robot, and takes in powers to convert them to motor powers. */
 
 //Class declaration
 public class DriveTrain {
 
-    //Declare private instance motors
+    //Declare DcMotors
     private DcMotor leftMotor;
     private DcMotor rightMotor;
 

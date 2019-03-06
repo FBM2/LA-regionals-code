@@ -18,8 +18,7 @@ import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.REVERSE;
  * This class contains all of the functions for teleop, including use of the Drivetrain, grabbers,
  * Lifters, and hanger. It also returns telemetry continuously for all of the motor powers, servo
  * positions, and current states of digital sensors. It uses objects to control these functions
- * and minimizes the use of its own variables and and tries to simplify code whenever possible.
- */
+ * and minimizes the use of its own variables and and tries to simplify code whenever possible. */
 
 //Declaration for display on the driver station
 @TeleOp(name = "TeleopMain")

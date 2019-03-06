@@ -6,28 +6,30 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
-import com.qualcomm.robotcore.hardware.Servo;
 
 /** Grabber created by Isaac Dienstag for team 9804 Bombsquad
  * This class holds all the methods used to function the grabber of the robot. It has two DcMotors,
  * one for the extender and one for the sweeper, and one CRServo for the disrupter. It also has two
  * DigitalChannels representing the SlowState and the store sensors. We use these digital channels
- * along with the variables given to us from the main to determine these motor and servo powers.
- */
+ * along with the variables given to us from the main to determine these motor and servo powers.*/
 
 //Class declorations
 public class Grabber {
 
-    //Declare instance Motors
+    //Declare DcMotors
     private DcMotor sweeper;
     private DcMotor extender;
 
     //Declare DigitalChannels
     private DigitalChannel store, slow;
+
+    //Declare CRServo
+    private CRServo disrupter;
+
+    //Declare instance variables
     private boolean previousStatus = false, currentStatus = false;
     private double sum;
 
-    private CRServo disrupter;
 
     //Constructs a Grabber with two motor names and two motor directions, as well as a digitChannel
     public Grabber(DcMotor newSweeper, DcMotor newExtender, DcMotorSimple.Direction sweeperD, DcMotorSimple.Direction extenderD,

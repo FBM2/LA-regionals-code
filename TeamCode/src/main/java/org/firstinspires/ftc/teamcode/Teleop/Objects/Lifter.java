@@ -15,24 +15,27 @@ import org.firstinspires.ftc.teamcode.Teleop.Mains.TeleopMain;
  * dumper, the servo represents the servo used to move the position of the dumper, and the
  * DigitalChannels represent whether or not the lifter is at the bottom, and whether or not it is
  * near the top. We use these DigitalChannels in combination with the values given from the main
- * class to determine the power and position of the Motor and Servo
- */
+ * class to determine the power and position of the Motor and Servo */
 
 //Class declaration
 public class Lifter extends TeleopMain { //This class has to extend TeleopMain in order to have access to getRuntime() method
-    //Declare instance Motor
+    //Declare DcMotor
     private DcMotor liftMotor;
 
-    //Declare booleans
+    //Declare digital channels
+    private DigitalChannel atTop;
+    private DigitalChannel atBottom;
+    
+    //Declare Servo
+    private Servo dumper;
+
+    //Declare instance variables
     private boolean lifting = false, afterLift = false, doingItAll = false, droppingFromTop = false;
     private double time1, time2;
     private double variation = 0;
     private boolean PSIncrease = false, PSDecrease = false;
 
-    //Declare digital channels
-    private DigitalChannel atTop;
-    private DigitalChannel atBottom;
-    private Servo dumper;
+
 
     //Constructs a Lifter with 1 motor, 1 motor direction, and 3 Digital channels
     public Lifter(DcMotor lifter1, DcMotorSimple.Direction lifter1D, DigitalChannel topLimit, DigitalChannel bottomLimit, Servo dumpServo) {

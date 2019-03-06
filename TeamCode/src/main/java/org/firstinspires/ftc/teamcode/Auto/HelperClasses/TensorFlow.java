@@ -13,8 +13,7 @@ import java.util.List;
  * This class holds all of the TensorFlow variables and methods for autonomous. This class extends
  * Functions for auto in order to have access to all of its variables and methods, but adds new
  * variables that relate to Tfod or Vuforia. An autonomous would extend this class if it wanted to
- * run using TensorFlow rather than a pixyCam to find the position of the gold block.
- */
+ * run using TensorFlow rather than a pixyCam to find the position of the gold block. */
 
 public abstract class TensorFlow extends FunctionsForAuto {
     //VARIABLES

@@ -10,16 +10,15 @@ import com.qualcomm.robotcore.hardware.Servo;
  * This class holds all the methods used to function the hanger of the robot. It only has one DcMotor
  * and one servo. The motor represents the hanger motor used to raise and lower us, and the servo
  * represents the pin we pull out of the robot to unlock the hanger. We determine the power of the
- * motors based on the variables given to use from the main class.
- */
+ * motors based on the variables given to use from the main class. */
 
 //Class declaration
 public class Hanger {
 
-    //Private instance motor declaration
+    //Declare DcMotor
     private DcMotor hanger;
 
-    //Private instance servo declaration
+    //Declare Servo
     private Servo swapper;
 
     //Constructs a Hanger and asks for one motor, one motor direction and a servo
