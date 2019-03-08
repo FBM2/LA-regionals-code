@@ -14,7 +14,7 @@ import org.firstinspires.ftc.teamcode.Auto.HelperClasses.TensorFlow;
 
 //Declaration for display on the driver station
 //@Disabled
-@Autonomous(name = "Corner Auto 2")
+@Autonomous(name = "Depot Auto 2")
 public class DepotAuto2 extends TensorFlow {
 
     //Variable declarations
@@ -30,7 +30,7 @@ public class DepotAuto2 extends TensorFlow {
 
         //Initialize all motors, servos, and sensors (including gyro imu, Tfod, and vuforia)
         //with our name as Depot Auto 2. Transition to TeleopMain after this opmode is over
-        initAll("Depot Auto 2", "TeleopMain");
+        initAll("Depot Auto 2", "");
 
         waitForStart();//Wait for us to start the autonomous
         resetStartTime();//Reset the start time once we press play
@@ -67,19 +67,19 @@ public class DepotAuto2 extends TensorFlow {
         //faces our depot and drive forwards towards it. We move like this in order to abide by
         //safepaths and ensure we do not hit our alliance partner.
         if(rightBlock) {
-            rotate(-10, .35, 7, "Turn towards right block");
-            driveWithEncoders(35, .4, 3, "Drive and hit right block");
-            driveWithEncoders(10,-.4,3, "Back up");
+            rotate(-30, .35, 7, "Turn towards right block");
+            driveWithEncoders(38, .4, 3, "Drive and hit right block");
+            driveWithEncoders(13,-.4,3, "Back up");
             rotate(-83, .35, 5, "Turn towards wall");
             driveWithEncoders(60,-.4,5, "Drive towards wall");
             rotate(-40,.34,5, "Turn towards depot");
-            driveWithEncoders(20,.4,5, "Drive towards depot:");
+            driveWithEncoders(40,.4,5, "Drive towards depot:");
         }//If the block is on the left we turn to the left, drive forward and hit the block.
         //We then immediately turn towards our depot and drive forward towards it.
         else if(leftBlock) {
-            rotate(30, .35, 7, "Turn towards left block");
+            rotate(20, .35, 7, "Turn towards left block");
             driveWithEncoders(40,.4,3, "Drive and hit block");
-            rotate(-35,.5,3, "Turn towards depot");
+            rotate(-15,.35,3, "Turn towards depot");
             driveWithEncoders(20,.4,2, "Drive towards depot");
         }//If the block is in the center we do not turn towards either direction; instead we just
         //drive straight forward, hitting the block and lining us up with the depot
@@ -92,21 +92,18 @@ public class DepotAuto2 extends TensorFlow {
         //at a constant -.2 power, so it doesn't fall down again on the field, messing us up and damaging the intake
         dropMarker();
 
-        //If the block was on the left, we have to turn towards the crater opposing team's crater
-        if(leftBlock)
-            rotate(-27, .4, 3, "Turn towards wall");
         //If the block is in the center, we back up, turn towards  the opponents crater, and drive towards it
-        else if(centerBlock){
-            driveWithEncoders(30, -.4, 3,"Drive backwards");
-            rotate(-83, .35, 5, "Turn towards wall");
-            driveWithEncoders(45, -.4, 3, "Drive towards wall");
+        if(centerBlock){
+            driveWithEncoders(25, -.4, 3,"Drive backwards");
+            rotate(-66, .35, 5, "Turn towards wall");
+            driveWithEncoders(68, -.4, 3, "Drive towards wall");
         }
 
-        //Turn towards the opponents crater
-        rotate(-50,.35,3, "Turn towards crater");
-
-        //Drive backwards towards the opposing team's crater to park
-        driveWithEncoders(75, -.5, 4, "Drive towards crater");
-
+        if(!centerBlock) {
+            //Turn towards the opponents crater
+            rotate(-40, .35, 3, "Turn towards crater");
+            //Drive backwards towards the opposing team's crater to park
+            driveWithEncoders(75, -.5, 4, "Drive towards crater");
+        }
     } //Ends runOpMode method
 } //Ends class

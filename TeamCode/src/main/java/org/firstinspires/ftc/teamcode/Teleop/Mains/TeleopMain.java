@@ -63,7 +63,7 @@ public class TeleopMain extends OpMode {
         //Set intake controls to the Y axis of the left stick on gamepad2
         GB.intake(gamepad2.left_stick_y);
         //Set the direct control of disrupter control to the a button on gamepad2
-        GB.disrupt(gamepad2.a);
+        GB.disrupt(gamepad2.y);
 
         //At the very beginning of teleop (in the first half second), we want to run the lifter up and move the dumper servo
         //to the neutral position in order to get the dumper into the neutral position from the init position
@@ -81,7 +81,7 @@ public class TeleopMain extends OpMode {
             LT.dump(false, true, false, false); //Hold the dumper in the down position
         else //Else
             //Set the control of the dumper servo to the x and y buttons of gamepad2
-            LT.dump(gamepad2.x, gamepad2.y, gamepad2.dpad_up, gamepad2.dpad_down);
+            LT.dump(gamepad2.x, gamepad2.a, gamepad2.dpad_up, gamepad2.dpad_down);
 
         //Set hanging motor power control to the y axis of the gunner's right stick
         HG.hangAndDrop(gamepad2.right_stick_y);

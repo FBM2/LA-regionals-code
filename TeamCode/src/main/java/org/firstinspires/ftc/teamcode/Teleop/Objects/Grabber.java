@@ -69,11 +69,11 @@ public class Grabber {
 
         sum = rt - lt;//The sum of the two triggers that ranges from 1 to -1
         if(!slow.getState() && previousStatus) { //If slowState is false (which means activated) and previous status is true
-            extender.setPower(deadzone(.05, sum)/2); //Cut the extender power in half for more precise control
+            extender.setPower(deadzone(.05, sum)*.75); //Cut the extender power in half for more precise control
             disrupt(true); //Turn on the disrupter
         }
         else if(!slow.getState()) { //If slowState is false (which means activated)
-            extender.setPower(deadzone(.05, sum)/2); //Cut the extender power in half for more precise control
+            extender.setPower(deadzone(.05, sum)*.75); //Cut the extender power in half for more precise control
             disrupt(false); //Turn off the disrupter, since previousStatus is false
         }
         else { //Else (slow.getState() && !previousStatus)
@@ -89,7 +89,7 @@ public class Grabber {
         else if(!store.getState()) //If store is false, meaning the sweeper is in the store position
             sweeper.setPower(0); //Stop moving the store motor
         else //Else (!outOfDeadzone(.05, pow) && store.getState())
-            sweeper.setPower(.2); //Set the power of sweeper to .2 so it moves back to the store position
+            sweeper.setPower(.5); //Set the power of sweeper to .2 so it moves back to the store position
     } //End void method
 
     //Asks for a boolean and determines whether or not to run the disrupter servo

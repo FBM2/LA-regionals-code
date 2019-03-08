@@ -25,7 +25,7 @@ public class Lifter extends TeleopMain { //This class has to extend TeleopMain i
     //Declare digital channels
     private DigitalChannel atTop;
     private DigitalChannel atBottom;
-    
+
     //Declare Servo
     private Servo dumper;
 
@@ -144,9 +144,12 @@ public class Lifter extends TeleopMain { //This class has to extend TeleopMain i
                 afterLift = false; //Set afterLift to false so it won't apply any power when we move out of this if statement
                 droppingFromTop = false; //Set droppingFromTop to false so we move out of this else if statement
             }
-            else if(atBottom.getState()) //If we are not at the bottom
+            else if(atBottom.getState()) { //If we are not at the bottom
                 liftMotor.setPower(-.5); //Set liftMotor power to -.4
-            else { //Else (!atBottom.getState())
+            }
+            else if(rb)
+                liftMotor.setPower(-.5);
+            else {
                 liftMotor.setPower(0); //Set the liftMotor power to 0
                 afterLift = false; //Set afterLift to false so it won't apply any power when we move out of this if statement
                 droppingFromTop = false; //Set droppingFromTop to false so we move out of this else if statement
@@ -277,7 +280,7 @@ public class Lifter extends TeleopMain { //This class has to extend TeleopMain i
 
         if(decrease){ //if decrease is true, signifying we would like to increase the pan servo value
             if(!PSDecrease) { //If previousStatus is false, meaning that we havn't changed the servo value on this press yet
-                variation -= .02; //Decrieent the servo value variable
+                variation -= .01; //Decrieent the servo value variable
                 PSDecrease = true; //Set the mode to true so we will not run this Decrement again
             }
         }
@@ -288,9 +291,9 @@ public class Lifter extends TeleopMain { //This class has to extend TeleopMain i
         if(down) //If down is true
             dumper.setPosition(.87+variation); //Set the position of dumper to .7
         else if(dumps) //Else if dumps is true
-            dumper.setPosition(.65+variation); //Set the position of dumper to .4
+            dumper.setPosition(.68+variation); //Set the position of dumper to .4
         else //Else (!down && !dump)
-            dumper.setPosition(.46+variation); //Set the position of dumper to .2
+            dumper.setPosition(.45+variation); //Set the position of dumper to .2
     } //End void method
 
     //Getters used for telemetry

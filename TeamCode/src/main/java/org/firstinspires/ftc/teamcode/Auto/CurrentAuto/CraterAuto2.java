@@ -29,7 +29,7 @@ public class CraterAuto2 extends TensorFlow {
 
         //Initialize all motors, servos, and sensors (including gyro imu, Tfod, and vuforia)
         //with our name as Crater Auto 2. Transition to TeleopMain after this opmode is over
-        initAll("Crater Auto 2", "TeleopMain");
+        initAll("Crater Auto 2", "");
 
         waitForStart();//Wait for us to start the autonomous
         resetStartTime();//Reset the start time once we press play
@@ -68,9 +68,6 @@ public class CraterAuto2 extends TensorFlow {
         //at a constant -.2 power, so it doesn't fall down again on the field, messing us up and damaging the intake
         dropMarker();
 
-        //Realign to make sure we do not hit our teammate's right block and drive back to our crater
-        rotate(130  ,.35,5, "Allign to wall");
-
         //Drive back and realign with the lander
         driveWithEncoders(37,-.4,3, "Drive away from Depot");
         pause(.1);
@@ -90,13 +87,13 @@ public class CraterAuto2 extends TensorFlow {
         //If the block was not in the v ery far right or far left, but we still saw it
         //we assume the block is in the center, and do not turn towards either direction
         else {
-            driveWithEncoders(48,-.5, 3, "Drive to center block");
+            driveWithEncoders(53,-.5, 3, "Drive to center block");
             rotate(7, .35, 7, "Turn towards center block");
         }
 
         //Drive forward to hit the block and partially park in the crater, but if the block is center
         //Drive forward for a shorter period so we do not wedge the block on the crater
-        if(!rightBlock)
+        if(!centerBlock)
             driveWithEncoders(30, .4, 2, "Drive forward and hit block");
         else
             driveWithEncoders(15,.35,2, "Drive forward and hit block");
@@ -106,6 +103,7 @@ public class CraterAuto2 extends TensorFlow {
         pause(1);
         setExtenderPower(0);
 
+        pause(20);
     } //Ends runOpMode method
 } //Ends class
 
