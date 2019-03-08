@@ -27,7 +27,6 @@ public class DepotAuto2 extends TensorFlow {
         //Create a new thread for our telemetry that will run parallel to this one
         TelemetryThread th = new TelemetryThread("TelThread");
 
-
         //Initialize all motors, servos, and sensors (including gyro imu, Tfod, and vuforia)
         //with our name as Depot Auto 2. Transition to TeleopMain after this opmode is over
         initAll("Depot Auto 2", "");

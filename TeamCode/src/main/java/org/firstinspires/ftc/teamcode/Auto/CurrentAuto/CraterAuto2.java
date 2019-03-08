@@ -34,7 +34,7 @@ public class CraterAuto2 extends TensorFlow {
         //Start the telemetry child thread that will continuously return our current angle on screen
         //as well as set the angle to a variable for use in our imu turns
         th.startThread();
-        
+
         waitForStart();//Wait for us to start the autonomous
         resetStartTime();//Reset the start time once we press play
 
@@ -104,8 +104,6 @@ public class CraterAuto2 extends TensorFlow {
         setExtenderPower(.25);
         pause(1);
         setExtenderPower(0);
-
-        pause(20);
     } //Ends runOpMode method
 } //Ends class
 
