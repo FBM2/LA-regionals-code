@@ -32,29 +32,31 @@ public class DepotAuto2 extends TensorFlow {
         //with our name as Depot Auto 2. Transition to TeleopMain after this opmode is over
         initAll("Depot Auto 2", "");
 
+        //Start the telemetry child thread that will continuously return our current angle on screen
+        //as well as set the angle to a variable for use in our imu turns
+        th.startThread();
+
         waitForStart();//Wait for us to start the autonomous
         resetStartTime();//Reset the start time once we press play
 
         lowestGold = getGoldBlock(1);//Take 1 second to look for the lowest gold block on screen
 
-        //If we didn't see a gold block, or the gold block was on the very far right of our screen
-        //We assume the gold block was in the right position
-        if(lowestGold == null || ((int)lowestGold.getTop()) > 900) {
-            setGoldMineralPosTelemetry("Right");
-            rightBlock = true;
-        }//If the gold block was in the left portion of the screen, we assume the block is left
-        else if(lowestGold.getTop() < 450) {
+        //If we didn't see a gold block, or the gold block is on the very far left of our screen
+        //We assume the gold block was in the left position
+        if(lowestGold == null || ((int)lowestGold.getTop()) < 100) {
             setGoldMineralPosTelemetry("Left");
             leftBlock = true;
+        }//If the gold block was in the right portion of the screen, we assume the block is right
+        else if(lowestGold.getTop() > 500) {
+            setGoldMineralPosTelemetry("Right");
+            rightBlock = true;
         }//Else, that means the block is not to the right or to the left, so it must be center
         else {
             setGoldMineralPosTelemetry("Center");
             centerBlock = true;
         }telemetry.update();//update the telemetry with our new block position
 
-        //Start the telemetry child thread that will continuously return our current angle on screen
-        //as well as set the angle to a variable for use in our imu turns
-        th.startThread();
+
 
         //We start hanging, so we call the method dropFromHang(), which pulls out the lock,
         //lowers us down, and unlaches us from the lander, followed by an imu turn to make us
@@ -98,10 +100,15 @@ public class DepotAuto2 extends TensorFlow {
             rotate(-66, .35, 5, "Turn towards wall");
             driveWithEncoders(68, -.4, 3, "Drive towards wall");
         }
-
-        if(!centerBlock) {
+        else if(rightBlock) {
             //Turn towards the opponents crater
             rotate(-40, .35, 3, "Turn towards crater");
+            //Drive backwards towards the opposing team's crater to park
+            driveWithEncoders(75, -.5, 4, "Drive towards crater");
+        }
+        else {
+            //Turn towards the opponents crater
+            rotate(-45, .35, 3, "Turn towards crater");
             //Drive backwards towards the opposing team's crater to park
             driveWithEncoders(75, -.5, 4, "Drive towards crater");
         }

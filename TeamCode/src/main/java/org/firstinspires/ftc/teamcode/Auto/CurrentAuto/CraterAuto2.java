@@ -31,25 +31,27 @@ public class CraterAuto2 extends TensorFlow {
         //with our name as Crater Auto 2. Transition to TeleopMain after this opmode is over
         initAll("Crater Auto 2", "");
 
+        //Start the telemetry child thread that will continuously return our current angle on screen
+        //as well as set the angle to a variable for use in our imu turns
+        th.startThread();
+        
         waitForStart();//Wait for us to start the autonomous
         resetStartTime();//Reset the start time once we press play
 
         lowestGold = getGoldBlock(1);//Take 1 second to look for the lowest gold block on screen
 
-        if(lowestGold == null || ((int)lowestGold.getTop()) > 900) { //Return the l/c/r position of the gold mineral
-            setGoldMineralPosTelemetry("Right");
-            rightBlock = true;
-        }else if(lowestGold.getTop() < 450) {
+        if(lowestGold == null || ((int)lowestGold.getTop()) < 100) { //Return the l/c/r position of the gold mineral
             setGoldMineralPosTelemetry("Left");
             leftBlock = true;
+        }else if(lowestGold.getTop() > 500) {
+            setGoldMineralPosTelemetry("Right");
+            rightBlock = true;
         }else {
             setGoldMineralPosTelemetry("Center");
             centerBlock = true;
         }telemetry.update();
 
-        //Start the telemetry child thread that will continuously return our current angle on screen
-        //as well as set the angle to a variable for use in our imu turns
-        th.startThread();
+
 
         //We start hanging, so we call the method dropFromHang(), which pulls out the lock,
         //lowers us down, and unlaches us from the lander, followed by an imu turn to make us
@@ -59,7 +61,7 @@ public class CraterAuto2 extends TensorFlow {
         //Run our robot to the corner to drop our marker
         driveWithEncoders(17,.4, 5, "Drive to Gap");
         rotate(80,.35,3, "Turn to wall");
-        driveWithEncoders(65,.5, 3, "Drive to Wall");
+        driveWithEncoders(63,.5, 3, "Drive to Wall");
         rotate(115, .35, 5, "Turn to Depot");
         driveWithEncoders(25,.4,5, "Drive to Depot");
 

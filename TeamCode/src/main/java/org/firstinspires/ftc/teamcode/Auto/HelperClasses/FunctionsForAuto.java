@@ -215,7 +215,7 @@ public abstract class FunctionsForAuto extends InitForAuto {
         }
 
         public void run() {
-            while(opModeIsActive() && !isStopRequested() && getRuntime() < 30){
+            while(opModeIsActive() && !isStopRequested()){
                 currentAngle = getAngle();
                 imuAngle.setValue(currentAngle);telemetry.update();
             }
