@@ -40,7 +40,7 @@ public class TeleopMain extends OpMode {
         HG = new Hanger(hardwareMap.dcMotor.get("m6"), FORWARD, hardwareMap.servo.get("s2"));
 
         //Initialize servo positions and motor zero power behaviors
-        LT.dump(false, true, false, false);//Set the dumper servo to stay down
+        LT.dump(false, true, false, false, false);//Set the dumper servo to stay down
         DT.setZeroPow();//Set the zero power behavior of the DriveTrain motors to BRAKE so we have more precise control
         GB.setZeroPow();//Set the zero power behavior of the sweeper to BRAKE so we have more precise control
     }
@@ -59,7 +59,7 @@ public class TeleopMain extends OpMode {
 
         //Set reach control to left and right triggers of gamepad 1
         //Also set the disrupter toggle control to the b button of gamepad2
-        GB.reach(gamepad1.left_trigger, gamepad1.right_trigger, gamepad2.b);
+        GB.reach(gamepad1.left_trigger, gamepad1.right_trigger);
         //Set intake controls to the Y axis of the left stick on gamepad2
         GB.intake(gamepad2.left_stick_y);
         //Set the direct control of disrupter control to the a button on gamepad2
@@ -78,10 +78,10 @@ public class TeleopMain extends OpMode {
             LT.lift2(gamepad2.left_trigger, gamepad2.right_trigger,gamepad2.left_bumper,gamepad2.right_bumper);
 
         if(timeTwo - timeOne < .3) //If we are in the first .3 seconds of teleop
-            LT.dump(false, true, false, false); //Hold the dumper in the down position
+            LT.dump(false, true, false, false, false); //Hold the dumper in the down position
         else //Else
             //Set the control of the dumper servo to the x and y buttons of gamepad2
-            LT.dump(gamepad2.x, gamepad2.a, gamepad2.dpad_up, gamepad2.dpad_down);
+            LT.dump(gamepad2.x, gamepad2.a, gamepad2.dpad_up, gamepad2.dpad_down, gamepad2.b);
 
         //Set hanging motor power control to the y axis of the gunner's right stick
         HG.hangAndDrop(gamepad2.right_stick_y);

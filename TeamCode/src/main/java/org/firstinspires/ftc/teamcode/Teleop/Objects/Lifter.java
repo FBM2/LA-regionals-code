@@ -34,6 +34,7 @@ public class Lifter extends TeleopMain { //This class has to extend TeleopMain i
     private double time1, time2;
     private double variation = 0;
     private boolean PSIncrease = false, PSDecrease = false;
+    private boolean previousStatus = false, currentStatus = false;
 
 
 
@@ -268,7 +269,15 @@ public class Lifter extends TeleopMain { //This class has to extend TeleopMain i
     } //End void method
 
     //Asks for two booleans, and uses them to determine the power of the dumper servo
-    public void dump(boolean dumps, boolean down, boolean increase, boolean decrease) {
+    public void dump(boolean dumps, boolean down, boolean increase, boolean decrease, boolean toggle) {
+        if (toggle){ //if toggle is true, signifying we would like to change modes
+            currentStatus = !previousStatus; //Set current mode to the opposite of the previous mode, meaning that we are now in 'on' mode
+        }
+        else //(!toggle)
+            previousStatus = currentStatus; //Set previousStatus to currentStatus if toggle is false,
+        //meaning we would not like to change any mode boolean values
+
+
         if (increase){ //if increase is true, signifying we would like to increase the pan servo value
             if (!PSIncrease) { //If previousStatus is false, meaning that we havn't changed the servo value on this press yet
                 variation += .02; //Increment the servo value variable
@@ -288,7 +297,7 @@ public class Lifter extends TeleopMain { //This class has to extend TeleopMain i
             PSDecrease = false; //Set previousStatus to false so we will increment again on the next button press
 
         //meaning we would not like to change any mode boolean values
-        if(down) //If down is true
+        if(down || currentStatus) //If down is true
             dumper.setPosition(.87+variation); //Set the position of dumper to .7
         else if(dumps) //Else if dumps is true
             dumper.setPosition(.68+variation); //Set the position of dumper to .4

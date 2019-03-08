@@ -26,7 +26,6 @@ public class CraterAuto2 extends TensorFlow {
         //Create a new thread for our telemetry that will run parallel to this one
         TelemetryThread th = new TelemetryThread("TelThread");
 
-
         //Initialize all motors, servos, and sensors (including gyro imu, Tfod, and vuforia)
         //with our name as Crater Auto 2. Transition to TeleopMain after this opmode is over
         initAll("Crater Auto 2", "");

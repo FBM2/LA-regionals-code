@@ -27,7 +27,6 @@ public class Grabber {
     private CRServo disrupter;
 
     //Declare instance variables
-    private boolean previousStatus = false, currentStatus = false;
     private double sum;
 
 
@@ -59,20 +58,10 @@ public class Grabber {
 
     //Reach asks for two doubles and a boolean, and runs the extender motor at rt - lt, so it ranges from 1 to -1
     //Uses the boolean as a toggle and uses it to determine whether or not to run the disrupter servo.
-    public void reach(double lt, double rt, boolean toggle) {
-        if (toggle){ //if toggle is true, signifying we would like to change modes
-            currentStatus = !previousStatus; //Set current mode to the opposite of the previous mode, meaning that we are now in 'on' mode
-        }
-        else //(!toggle)
-            previousStatus = currentStatus; //Set previousStatus to currentStatus if toggle is false,
-            //meaning we would not like to change any mode boolean values
+    public void reach(double lt, double rt) {
 
         sum = rt - lt;//The sum of the two triggers that ranges from 1 to -1
-        if(!slow.getState() && previousStatus) { //If slowState is false (which means activated) and previous status is true
-            extender.setPower(deadzone(.05, sum)*.75); //Cut the extender power in half for more precise control
-            disrupt(true); //Turn on the disrupter
-        }
-        else if(!slow.getState()) { //If slowState is false (which means activated)
+        if(!slow.getState()) { //If slowState is false (which means activated)
             extender.setPower(deadzone(.05, sum)*.75); //Cut the extender power in half for more precise control
             disrupt(false); //Turn off the disrupter, since previousStatus is false
         }
