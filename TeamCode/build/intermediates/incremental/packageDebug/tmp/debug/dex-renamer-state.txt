@@ -1,4 +1,4 @@
-#Fri Mar 08 18:21:30 PST 2019
+#Fri Mar 08 19:06:19 PST 2019
 base.0=/Users/isaacdienstag/Documents/GitHub/LA-regionals-code/TeamCode/build/intermediates/dex/debug/mergeDexDebug/out
 path.0=classes.dex
 renamed.0=classes.dex

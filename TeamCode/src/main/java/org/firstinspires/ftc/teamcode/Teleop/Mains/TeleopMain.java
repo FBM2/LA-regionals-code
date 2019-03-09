@@ -119,11 +119,11 @@ public class TeleopMain extends OpMode {
             timeFour = this.getRuntime(); //Continue to update the variable timeFour
             if(timeFour - timeThree < .4){ //If we have been running for less than .4 seconds
                 LT.lift(.6, 0, false, false); //Lift the lifter
-                LT.dump(false, true, false, false, false); //Set the dumper to down
+                LT.dump(false, true, false, false, timeFour - timeThree > .2); //Set the dumper to down
             }
             else if(timeFour - timeThree < 1){ //If we have been running for less than 1 second
                 LT.lift(0, .3, false, false); //drop the lifter
-                LT.dump(false, false, false, false, true); //set the down toggle of the dumper to true
+                LT.dump(false, false, false, false, false); //set the down toggle of the dumper to true
             }
             else { //else, we are not in the first second
                 runningDrop = false; //exit the loop by setting runningDrop to false
