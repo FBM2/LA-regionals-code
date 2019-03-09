@@ -116,7 +116,7 @@ public class TeleopMain extends OpMode {
             LT.dump(gamepad2.x, gamepad2.a, gamepad2.dpad_up, gamepad2.dpad_down, gamepad2.b);
         }
         else if(runningDrop){ //If we are runningDrop
-            timeFour = this.getRuntime(); //Continue to update the variable timeFour
+            timeFour = this.getRuntime(); //Continue updating the variable timeFour
             if(timeFour - timeThree < .4){ //If we have been running for less than .4 seconds
                 LT.lift(.6, 0, false, false); //Lift the lifter
                 LT.dump(false, true, false, false, timeFour - timeThree > .2); //Set the dumper to down
