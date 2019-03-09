@@ -31,12 +31,12 @@ public class DepotAuto2 extends TensorFlow {
         //with our name as Depot Auto 2. Transition to TeleopMain after this opmode is over
         initAll("Depot Auto 2", "");
 
+        waitForStart();//Wait for us to start the autonomous
+        resetStartTime();//Reset the start time once we press play
+
         //Start the telemetry child thread that will continuously return our current angle on screen
         //as well as set the angle to a variable for use in our imu turns
         th.startThread();
-
-        waitForStart();//Wait for us to start the autonomous
-        resetStartTime();//Reset the start time once we press play
 
         lowestGold = getGoldBlock(1);//Take 1 second to look for the lowest gold block on screen
 
@@ -46,7 +46,7 @@ public class DepotAuto2 extends TensorFlow {
             setGoldMineralPosTelemetry("Left");
             leftBlock = true;
         }//If the gold block was in the right portion of the screen, we assume the block is right
-        else if(lowestGold.getTop() > 500) {
+        else if(lowestGold.getTop() > 650) {
             setGoldMineralPosTelemetry("Right");
             rightBlock = true;
         }//Else, that means the block is not to the right or to the left, so it must be center
@@ -54,6 +54,7 @@ public class DepotAuto2 extends TensorFlow {
             setGoldMineralPosTelemetry("Center");
             centerBlock = true;
         }telemetry.update();//update the telemetry with our new block position
+
 
         //We start hanging, so we call the method dropFromHang(), which pulls out the lock,
         //lowers us down, and unlaches us from the lander, followed by an imu turn to make us
@@ -94,18 +95,20 @@ public class DepotAuto2 extends TensorFlow {
         //If the block is in the center, we back up, turn towards  the opponents crater, and drive towards it
         if(centerBlock){
             driveWithEncoders(25, -.4, 3,"Drive backwards");
-            rotate(-66, .35, 5, "Turn towards wall");
-            driveWithEncoders(68, -.4, 3, "Drive towards wall");
+            rotate(-75, .35, 5, "Turn towards wall");
+            driveWithEncoders(63, -.4, 3, "Drive towards wall");
+            rotate(-53, .35, 3, "Turn towards crater");
+            driveWithEncoders(10,-.4,3,"Drive towards crater");
         }
         else if(rightBlock) {
             //Turn towards the opponents crater
-            rotate(-40, .35, 3, "Turn towards crater");
+            rotate(-38, .35, 3, "Turn towards crater");
             //Drive backwards towards the opposing team's crater to park
-            driveWithEncoders(75, -.5, 4, "Drive towards crater");
+            driveWithEncoders(70, -.5, 4, "Drive towards crater");
         }
         else {
             //Turn towards the opponents crater
-            rotate(-45, .35, 3, "Turn towards crater");
+            rotate(-48, .35, 3, "Turn towards crater");
             //Drive backwards towards the opposing team's crater to park
             driveWithEncoders(75, -.5, 4, "Drive towards crater");
         }

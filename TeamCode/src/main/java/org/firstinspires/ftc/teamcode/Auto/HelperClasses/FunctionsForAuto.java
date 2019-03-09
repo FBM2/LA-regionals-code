@@ -184,7 +184,7 @@ public abstract class FunctionsForAuto extends InitForAuto {
     //A negative power is applied to the extender indefinetely in order
     //to be sure that it does not fall down in front of our robot again
     protected void dropMarker(){
-        extender.setPower(.25);
+        extender.setPower(.4);
         pause(1);
         extender.setPower(0);
         sweeper.setPower(-.85);
@@ -215,7 +215,7 @@ public abstract class FunctionsForAuto extends InitForAuto {
         }
 
         public void run() {
-            while(opModeIsActive() && !isStopRequested()){
+            while(opModeIsActive() && !isStopRequested() && getRuntime() < 30){
                 currentAngle = getAngle();
                 imuAngle.setValue(currentAngle);telemetry.update();
             }

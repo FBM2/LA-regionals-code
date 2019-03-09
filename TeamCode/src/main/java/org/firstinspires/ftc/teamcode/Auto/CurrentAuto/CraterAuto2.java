@@ -30,12 +30,12 @@ public class CraterAuto2 extends TensorFlow {
         //with our name as Crater Auto 2. Transition to TeleopMain after this opmode is over
         initAll("Crater Auto 2", "");
 
+        waitForStart();//Wait for us to start the autonomous
+        resetStartTime();//Reset the start time once we press play
+
         //Start the telemetry child thread that will continuously return our current angle on screen
         //as well as set the angle to a variable for use in our imu turns
         th.startThread();
-
-        waitForStart();//Wait for us to start the autonomous
-        resetStartTime();//Reset the start time once we press play
 
         lowestGold = getGoldBlock(1);//Take 1 second to look for the lowest gold block on screen
 
@@ -97,10 +97,10 @@ public class CraterAuto2 extends TensorFlow {
         if(!centerBlock)
             driveWithEncoders(30, .4, 2, "Drive forward and hit block");
         else
-            driveWithEncoders(15,.35,2, "Drive forward and hit block");
+            driveWithEncoders(22,.35,2, "Drive forward and hit block");
 
         //Extend our extender down to ensure we are parked
-        setExtenderPower(.25);
+        setExtenderPower(.4);
         pause(1);
         setExtenderPower(0);
     } //Ends runOpMode method
