@@ -108,7 +108,7 @@ public class TeleopMain extends OpMode {
         if(timeTwo - timeOne < .5) {
             //If we are in the first .5 seconds of teleop
             LT.lift(.5, 0, false, false); //Set the lift power of the lifter to .5 to move the lifter up
-            LT.dump(false, timeTwo-timeOne < .3, false, false, false);
+            LT.dump(false, true, false, false, false);
         }
         else if(timeTwo - timeOne < 1) {//Else if we are in the first second of teleop
             //Set the power of the lifter to -.3 to move the lifter back down to the bottom
@@ -119,7 +119,7 @@ public class TeleopMain extends OpMode {
             timeFour = this.getRuntime(); //Continue updating the variable timeFour
             if(timeFour - timeThree < .4){ //If we have been running for less than .4 seconds
                 LT.lift(.6, 0, false, false); //Lift the lifter
-                LT.dump(false, true, false, false, timeFour - timeThree > .2); //Set the dumper to down
+                LT.dump(false, true, false, false, true); //Set the dumper to down
             }
             else if(timeFour - timeThree < 1){ //If we have been running for less than 1 second
                 LT.lift(0, .3, false, false); //drop the lifter
@@ -134,12 +134,12 @@ public class TeleopMain extends OpMode {
             timeFour = this.getRuntime(); //Continue to update the variable timeFour
             if(timeFour - timeThree < .5) { //If we have been running for less than .5 seconds
                 LT.lift(.5, 0, false, false); //Set the lift power of the lifter to .5 to move the lifter up
-                LT.dump(false, timeTwo-timeOne < .3, false, false, false);//Set the dump position
+                LT.dump(false, false, false, false, false);//Set the dump position
                 //to down in the first .3 seconds
             }
-            else if(timeFour - timeThree < 1) { // Else if we have been running for less than 1 seconds
+            else if(timeFour - timeThree < 1.3) { // Else if we have been running for less than 1 seconds
                 //Set the power of the lifter to -.3 to move the lifter back down to the bottom
-                LT.lift(0, .5, false, false);
+                LT.lift(0, .3, false, false);
                 //Set the dumper position to the gamepad values
                 LT.dump(false, false, false, false, true);
             }
