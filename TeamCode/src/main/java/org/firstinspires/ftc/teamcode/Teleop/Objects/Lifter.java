@@ -49,7 +49,7 @@ public class Lifter extends TeleopMain { //This class has to extend TeleopMain i
         dumper.scaleRange(0,1);
     } //Ends constructor
 
-    //Asks for two doubles, and checks if input is too small to be considered intentional based on the value of tolereance.
+    //Asks for two doubles, and checks if input is too small to be considered intentional based on the value of tolerance.
     private double deadzone(double tolerance, double input){
         if(input > tolerance || input < -(tolerance)) //If |input| > deadzon
             return input; //We return input, because the input is likely intentional.

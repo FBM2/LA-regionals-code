@@ -55,8 +55,6 @@ public class DepotAuto2 extends TensorFlow {
             centerBlock = true;
         }telemetry.update();//update the telemetry with our new block position
 
-
-
         //We start hanging, so we call the method dropFromHang(), which pulls out the lock,
         //lowers us down, and unlaches us from the lander, followed by an imu turn to make us
         //parallel to the lander
