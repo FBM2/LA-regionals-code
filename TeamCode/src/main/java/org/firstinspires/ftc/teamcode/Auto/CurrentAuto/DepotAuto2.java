@@ -29,7 +29,7 @@ public class DepotAuto2 extends TensorFlow {
 
         //Initialize all motors, servos, and sensors (including gyro imu, Tfod, and vuforia)
         //with our name as Depot Auto 2. Transition to TeleopMain after this opmode is over
-        initAll("Depot Auto 2", "");
+        initAll("Depot Auto 2", "TeleopMain");
 
         waitForStart();//Wait for us to start the autonomous
         resetStartTime();//Reset the start time once we press play
@@ -60,6 +60,9 @@ public class DepotAuto2 extends TensorFlow {
         //lowers us down, and unlaches us from the lander, followed by an imu turn to make us
         //parallel to the lander
         dropFromHang();
+
+        rotate(7, .35, 3, "Turn towards center");
+
 
         //If the block is on the right we turn to the right, drive forward and hit the block.
         //We then back up turn clockwise so our intake faces our own team's crater and drive
@@ -102,7 +105,7 @@ public class DepotAuto2 extends TensorFlow {
         }
         else if(rightBlock) {
             //Turn towards the opponents crater
-            rotate(-38, .35, 3, "Turn towards crater");
+            rotate(-40, .35, 3, "Turn towards crater");
             //Drive backwards towards the opposing team's crater to park
             driveWithEncoders(70, -.5, 4, "Drive towards crater");
         }

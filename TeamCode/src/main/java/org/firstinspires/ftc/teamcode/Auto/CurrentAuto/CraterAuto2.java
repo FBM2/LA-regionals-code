@@ -28,7 +28,7 @@ public class CraterAuto2 extends TensorFlow {
 
         //Initialize all motors, servos, and sensors (including gyro imu, Tfod, and vuforia)
         //with our name as Crater Auto 2. Transition to TeleopMain after this opmode is over
-        initAll("Crater Auto 2", "");
+        initAll("Crater Auto 2", "TeleopMain");
 
         waitForStart();//Wait for us to start the autonomous
         resetStartTime();//Reset the start time once we press play
@@ -50,12 +50,12 @@ public class CraterAuto2 extends TensorFlow {
             centerBlock = true;
         }telemetry.update();
 
-
-
         //We start hanging, so we call the method dropFromHang(), which pulls out the lock,
         //lowers us down, and unlaches us from the lander, followed by an imu turn to make us
         //parallel to the lander
         dropFromHang();
+
+        rotate(10, .35, 3, "Turn towards center");
 
         //Run our robot to the corner to drop our marker
         driveWithEncoders(17,.4, 5, "Drive to Gap");
@@ -70,26 +70,26 @@ public class CraterAuto2 extends TensorFlow {
         dropMarker();
 
         //Drive back and realign with the lander
-        driveWithEncoders(37,-.4,3, "Drive away from Depot");
+        driveWithEncoders(42,-.4,3, "Drive away from Depot");
         pause(.1);
         rotate(95, .35, 5, "turn towards center");
 
         //If we didn't see a gold block, or the gold block was on the very far right of our screen
         //We assume the gold block was in the right position, and turn to the right to hit it
         if(rightBlock) {
-            driveWithEncoders(70,-.5, 3, "Drive to right block");
-            rotate(-5, .35, 7, "Turn towards right block");
+            driveWithEncoders(60,-.5, 3, "Drive to right block");
+            rotate(-8, .35, 7, "Turn towards right block");
         }
         //If the gold block was in the left porton of the screen, we assume the block is left, and turn towards it
         else if(leftBlock) {
-            driveWithEncoders(40,-.5, 3, "Drive to left block");
+            driveWithEncoders(35,-.5, 3, "Drive to left block");
             rotate(15, .35, 7, "Turn towards left block");
         }
         //If the block was not in the v ery far right or far left, but we still saw it
         //we assume the block is in the center, and do not turn towards either direction
         else {
-            driveWithEncoders(53,-.5, 3, "Drive to center block");
-            rotate(7, .35, 7, "Turn towards center block");
+            driveWithEncoders(51,-.5, 3, "Drive to center block");
+            rotate(10, .35, 7, "Turn towards center block");
         }
 
         //Drive forward to hit the block and partially park in the crater, but if the block is center
@@ -97,7 +97,7 @@ public class CraterAuto2 extends TensorFlow {
         if(!centerBlock)
             driveWithEncoders(30, .4, 2, "Drive forward and hit block");
         else
-            driveWithEncoders(22,.35,2, "Drive forward and hit block");
+            driveWithEncoders(18,.35,2, "Drive forward and hit block");
 
         //Extend our extender down to ensure we are parked
         setExtenderPower(.4);

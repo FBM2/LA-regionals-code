@@ -176,7 +176,6 @@ public abstract class FunctionsForAuto extends InitForAuto {
             pause(2.5);
             hanger.setPower(0);
             driveWithEncoders(4.5, .4, 1, "Drive off hook");
-            rotate(7, .35, 3, "Turn towards center");
         }
     }
 
